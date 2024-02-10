@@ -27,6 +27,7 @@ class World:
         self.level = level
         self.tiles = pygame.sprite.Group()
         self.trees = pygame.sprite.Group()
+        self.bottles = pygame.sprite.Group()
         self.player = pygame.sprite.GroupSingle()
         self.offset = 0
         self.create_world()
@@ -90,7 +91,8 @@ class World:
 
         self.trees.update()
         self.trees.draw(self.surface)
+        self.bottles.update()
+        self.bottles.draw(self.surface)
 
         self.horizontal_collision()
         self.vertical_collision()
-

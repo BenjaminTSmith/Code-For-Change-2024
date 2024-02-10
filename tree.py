@@ -19,5 +19,5 @@ class Tree(pygame.sprite.Sprite):
 
 
     def update(self, *args, **kwargs):
-        ...
+        self.check_for_growth()
 
