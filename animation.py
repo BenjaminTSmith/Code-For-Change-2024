@@ -7,7 +7,7 @@ def import_animations(filepath):
         for image in images:
             path = filepath + '/' + image
             image_surface = pygame.image.load(path).convert_alpha()
-            image_surface = pygame.transform.scale(image_surface, (128, 187))
+            image_surface = pygame.transform.rotozoom(image_surface, 0, 0.5)
             surfaces.append(image_surface)
 
     return surfaces

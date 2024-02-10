@@ -1,14 +1,16 @@
 import pygame
-import animation
+from animation import import_animations
 
 class Player(pygame.sprite.Sprite):
     def __init__(self, pos):
         # setup
         self.animation_path = "assets/lumberjack"
-        self.images = animation.import_animations(self.animation_path)
+        self.animations = {'idle' : [], 'run' : [], 'chopping' : []}
+        for key in self.animations.keys():
+            self.animations[key] = import_animations(self.animation_path + '/' + key)
 
         pygame.sprite.Sprite.__init__(self)
-        self.image = self.images[0]
+        self.image = self.animations['idle'][0]
         self.rect = self.image.get_rect(topleft=pos)
 
         # movement settings
@@ -23,10 +25,10 @@ class Player(pygame.sprite.Sprite):
         keys = pygame.key.get_pressed()
         if keys[pygame.K_RIGHT]:
             self.x_speed = 8
-            self.image = self.images[0]
+            self.image = self.animations['idle'][0]
         if keys[pygame.K_LEFT]:
             self.x_speed = -8
-            self.image = self.images[1]
+            self.image = self.animations['idle'][1]
         if keys[pygame.K_UP] or keys[pygame.K_SPACE]:
             if self.y_speed == 0:
                 self.y_speed = self.jump_force
