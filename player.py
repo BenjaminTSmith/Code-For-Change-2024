@@ -15,21 +15,21 @@ class Player(pygame.sprite.Sprite):
         self.x_speed = 0 
         self.y_speed = 0 
         self.gravity = 0.8
-        self.jump_force = -16
+        self.jump_force = -20
 
 
     def movement(self):
+        self.x_speed = 0
         keys = pygame.key.get_pressed()
         if keys[pygame.K_RIGHT]:
             self.x_speed = 8
             self.image = self.images[0]
-        elif keys[pygame.K_LEFT]:
+        if keys[pygame.K_LEFT]:
             self.x_speed = -8
             self.image = self.images[1]
-        elif keys[pygame.K_UP] or keys[pygame.K_SPACE]:
-            self.y_speed = self.jump_force
-        else:
-            self.x_speed = 0
+        if keys[pygame.K_UP] or keys[pygame.K_SPACE]:
+            if self.y_speed == 0:
+                self.y_speed = self.jump_force
 
     def apply_physics(self):
         self.y_speed += self.gravity
