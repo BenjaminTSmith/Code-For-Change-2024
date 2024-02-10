@@ -1,6 +1,6 @@
 import pygame
-from Tile import Tile
-from Player import Player
+from tile import Tile
+from player import Player
 
 
 world = [
@@ -42,8 +42,8 @@ class World:
                         self.player.add(player)
 
     def draw(self) -> None:
-        # self.tiles.update(-3, 0)
+        self.tiles.update(0, 0)
         self.tiles.draw(self.surface)
-        
+        self.player.update()       
         self.player.draw(self.surface)
 
