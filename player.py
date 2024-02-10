@@ -17,7 +17,7 @@ class Player(pygame.sprite.Sprite):
         self.idle = 0
         self.run = 0
         self.chopping = 0
-        self.animation_speed = 0.15
+        self.animation_speed = 0.25
 
         # movement settings
         self.x_speed = 0 
