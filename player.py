@@ -29,8 +29,6 @@ class Player(pygame.sprite.Sprite):
     def update(self, *args, **kwargs):
         self.movement()
         self.apply_physics()
-        self.rect.x += self.x_speed
-        self.rect.y += self.y_speed
 
                     
 
