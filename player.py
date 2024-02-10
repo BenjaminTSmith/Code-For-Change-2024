@@ -17,13 +17,13 @@ class Player(pygame.sprite.Sprite):
         self.idle = 0
         self.run = 0
         self.chopping = 0
-        self.animation_speed = 0.1
+        self.animation_speed = 0.15
 
         # movement settings
         self.x_speed = 0 
         self.y_speed = 0 
         self.gravity = 0.8
-        self.jump_force = -20
+        self.jump_force = -23
 
     def animate_run(self, direction):
         if direction == "left":
@@ -32,7 +32,6 @@ class Player(pygame.sprite.Sprite):
                 self.run = 0
             self.image = self.animations['run'][int(self.run)]
         else:
-
             self.run += self.animation_speed
             if self.run > 9 or self.run < 5:
                 self.run = 5
