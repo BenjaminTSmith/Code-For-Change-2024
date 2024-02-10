@@ -7,7 +7,7 @@ pygame.display.set_caption("Menu")
 BG = pygame.image.load("assets/Background.png")
 def get_font(size): # Returns Press-Start-2P in the desired size
     return pygame.font.Font("assets/font.ttf", size)
-'''def play():
+def play():
     while True:
         PLAY_MOUSE_POS = pygame.mouse.get_pos()
 
@@ -29,10 +29,11 @@ def get_font(size): # Returns Press-Start-2P in the desired size
                 sys.exit()
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if PLAY_BACK.checkForInput(PLAY_MOUSE_POS):
-                    main_menu()
+                    main()
+                    game_running = False
 
         pygame.display.update()
-'''
+
 def options():
     while True:
         OPTIONS_MOUSE_POS = pygame.mouse.get_pos()
@@ -88,7 +89,7 @@ def main_menu():
                 sys.exit()
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if PLAY_BUTTON.checkForInput(MENU_MOUSE_POS):
-                    game_running = False
+                    play()
                 if OPTIONS_BUTTON.checkForInput(MENU_MOUSE_POS):
                     options()
                 if QUIT_BUTTON.checkForInput(MENU_MOUSE_POS):
