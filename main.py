@@ -9,11 +9,13 @@ print("PyGame initialized")
 
 screen = pygame.display.set_mode((width, height))
 clock = pygame.time.Clock()
+pygame.display.set_caption("Environemental GAME")
 
 world = World(world, screen)
 world.create_world()
 
 running = True
+player = Player()
 
 while running:
     for event in pygame.event.get():
