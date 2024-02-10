@@ -52,6 +52,8 @@ class Player(pygame.sprite.Sprite):
         if keys[pygame.K_UP] or keys[pygame.K_SPACE]:
             if self.y_speed == 0:
                 self.y_speed = self.jump_force
+        if keys[pygame.K_x]:
+            pass
 
     def apply_physics(self):
         self.y_speed += self.gravity

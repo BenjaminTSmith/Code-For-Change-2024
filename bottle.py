@@ -2,7 +2,8 @@ import pygame
 
 class Bottle(pygame.sprite.Sprite):
     def __init__(self, pos):
-        self.image = pygame.image.load("path/to/image")
+        super().__init__()
+        self.image = pygame.image.load("assets/environment/Plastic Bottle.png")
         self.image = pygame.transform.rotozoom(self.image, 0, 0.5)
         self.rect = self.image.get_rect(midbottom=pos)
         self.destroyed = False
@@ -21,4 +22,7 @@ class Bottle(pygame.sprite.Sprite):
 
     def is_destroyed(self):
         return self.destroyed
+
+    def update(self, *offsets, **kwargs):
+        self.rect.x += offsets[0]
 
