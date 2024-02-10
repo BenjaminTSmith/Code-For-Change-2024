@@ -1,4 +1,6 @@
 import pygame
+from Player import Player
+from World import World
 
 
 pygame.init()
