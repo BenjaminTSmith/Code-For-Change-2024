@@ -1,6 +1,8 @@
 import pygame
 from tile import Tile
 from player import Player
+from bottle import Bottle
+from tree import Tree
 
 
 level = [
@@ -31,6 +33,8 @@ class World:
         self.player = pygame.sprite.GroupSingle()
         self.offset = 0
         self.create_world()
+        self.bottles.add(Bottle((300, 300)))
+        self.trees.add(Tree((400, 400)))
 
     def create_world(self) -> None:
         for index, row in enumerate(self.level):
@@ -82,17 +86,22 @@ class World:
             self.offset = 0
 
     def draw(self) -> None:
-        self.tiles.update(self.offset, 0)
-        self.tiles.draw(self.surface)
-
         self.player.update()       
         self.scrollx()
         self.player.draw(self.surface)
 
-        self.trees.update()
+        self.tiles.update(self.offset)
+        self.tiles.draw(self.surface)
+
+        self.trees.update(self.offset)
         self.trees.draw(self.surface)
-        self.bottles.update()
+        self.bottles.update(self.offset)
         self.bottles.draw(self.surface)
 
         self.horizontal_collision()
         self.vertical_collision()
+
+
+
+
+

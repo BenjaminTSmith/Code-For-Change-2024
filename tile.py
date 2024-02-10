@@ -7,6 +7,5 @@ class Tile(pygame.sprite.Sprite):
         self.image.fill('green')
         self.rect = self.image.get_rect(topleft=pos)
 
-    def update(self, *offsets, **kwargs):
+    def update(self, *offsets, **_):
         self.rect.x += offsets[0]
-        self.rect.y += offsets[1]
