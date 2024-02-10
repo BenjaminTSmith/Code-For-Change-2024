@@ -41,17 +41,23 @@ class World:
                         player = Player((x_pos, y_pos))
                         self.player.add(player)
 
-    def collision(self):
+    def horizontal_collision(self):
         player = self.player.sprite
         player.rect.x += player.x_speed
+
+        for sprite in self.tiles.sprites():
+            if sprite.rect.colliderect(self.player.sprite.rect):
+                if player.x_speed < 0:
+                    player.rect.left = sprite.rect.right
+                elif player.x_speed > 0:
+                    player.rect.right = sprite.rect.left
+
+    def vertical_collision(self):
+        player = self.player.sprite
         self.player.sprite.rect.y += self.player.sprite.y_speed
 
         for sprite in self.tiles.sprites():
             if sprite.rect.colliderect(self.player.sprite.rect):
-                if player.x_speed < 0 and :
-                    player.rect.left = sprite.rect.right
-                elif player.x_speed > 0:
-                    player.rect.right = sprite.rect.left
                 if player.y_speed < 0:
                     player.y_speed = 0
                     player.rect.top = sprite.rect.bottom
@@ -78,5 +84,7 @@ class World:
         self.player.update()       
         self.scrollx()
         self.player.draw(self.surface)
-        self.collision()
+
+        self.horizontal_collision()
+        self.vertical_collision()
 
