@@ -1,4 +1,3 @@
-@ -1,92 +0,0 @@
 import pygame
 from tile import Tile
 from player import Player
