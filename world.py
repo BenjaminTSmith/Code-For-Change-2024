@@ -59,9 +59,9 @@ class World:
         self.player.sprite.rect.y += self.player.sprite.y_speed
 
         for sprite in self.tiles.sprites():
-            if sprite.rect.colliderect(self.player.sprite.rect):
+            if sprite.rect.colliderect(player.rect):
                 if player.y_speed < 0:
-                    player.y_speed = 0
+                    player.y_speed = 0.3
                     player.rect.top = sprite.rect.bottom
                 elif player.y_speed > 0:
                     player.rect.bottom = sprite.rect.top
