@@ -6,10 +6,10 @@ world = [
     '                    ',
     '                    ',
     '                    ',
-    '........   .........',
-    '....................',
     '                    ',
-    '....................',
+    '                    ',
+    ' ....      .....    ',
+    '                    ',
     'P                   ',
     '....................',
 ]
@@ -17,6 +17,7 @@ world = [
 tile_size = 64
 width = len(world[0]) * tile_size
 height = len(world) * tile_size
+
 
 class World:
     def __init__(self, level, surface) -> None:
@@ -34,7 +35,10 @@ class World:
                         y_pos = index * tile_size
                         tile = Tile((x_pos, y_pos), tile_size)
                         self.tiles.add(tile)
+                    case 'P':
+                        ...
 
     def draw(self) -> None:
+        self.tiles.update(-3)
         self.tiles.draw(self.surface)
 
