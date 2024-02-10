@@ -1,4 +1,4 @@
-import pygame
+import pygame, sys
 from Player import Player
 from World import *
 from Tile import Tile
@@ -7,20 +7,21 @@ from Tile import Tile
 pygame.init()
 print("PyGame initialized")
 
-screen = pygame.display.set_mode((1280, 720))
+screen = pygame.display.set_mode((width, height))
 clock = pygame.time.Clock()
 
 world = World(world, screen)
+world.create_world()
 
 running = True
 
 while running:
     for event in pygame.event.get():
-        if event == pygame.QUIT:
-            running = False
-
-    screen.fill("black");
+        if event.type == pygame.QUIT:
+            pygame.quit()
+            sys.exit()
+    screen.fill("black")
+    world.draw()
     pygame.display.flip()
     clock.tick(60)
 
-pygame.quit()
