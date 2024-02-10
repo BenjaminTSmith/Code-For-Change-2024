@@ -8,21 +8,20 @@ class Player(pygame.sprite.Sprite):
         self.accer = 0
         self.brake = 0
 
-    def movement(self, x, y): #make accerlation and brake
-        for event in pygame.event.get():
+    def movement(self, event, x, y): #make accerlation and brake
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_LEFT:
-                    self.move_x -= x
-                    print(move_x)
+                    self.move_x -= 10
+                    print("moved left: ", self.move_x)
                 if event.key == pygame.K_RIGHT:
-                    self.move_x += x
-                    print(move_x)
+                    self.move_x += 10
+                    print("moved right: ",self.move_x)
                 if event.key == pygame.K_DOWN:
-                    selfmove_y -= y
-                    print("Moved down")
+                    self.move_y -= 10
+                    print("moved down: ", self.move_y)
                 if event.key == pygame.K_UP:
-                    selfmove_y += y
-                    print("Moved up")
+                    self.move_y += 10
+                    print("moved up: ", self.move_y)
             if event.type == pygame.KEYUP:
                 if event.key == pygame.K_LEFT:
                     self.move_x -= 0
