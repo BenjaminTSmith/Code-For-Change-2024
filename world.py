@@ -3,11 +3,11 @@ from tile import Tile
 from player import Player
 
 
-world = [
+level = [
     '                    ',
-    '                    ',
-    '                    ',
-    '                    ',
+    '  .                 ',
+    '  .                 ',
+    '  .                 ',
     ' ....      .....    ',
     '                    ',
     '       P            ',
@@ -16,7 +16,7 @@ world = [
 
 tile_size = 64
 width = 1200
-height = len(world) * tile_size
+height = len(level) * tile_size
 
 
 class World:
@@ -41,6 +41,24 @@ class World:
                         player = Player((x_pos, y_pos))
                         self.player.add(player)
 
+    def collision(self):
+        player = self.player.sprite
+        player.rect.x += player.x_speed
+        self.player.sprite.rect.y += self.player.sprite.y_speed
+
+        for sprite in self.tiles.sprites():
+            if sprite.rect.colliderect(self.player.sprite.rect):
+                if player.x_speed < 0 and :
+                    player.rect.left = sprite.rect.right
+                elif player.x_speed > 0:
+                    player.rect.right = sprite.rect.left
+                if player.y_speed < 0:
+                    player.y_speed = 0
+                    player.rect.top = sprite.rect.bottom
+                elif player.y_speed > 0:
+                    player.rect.bottom = sprite.rect.top
+                    player.y_speed = 0
+
     def scrollx(self):
         if self.player.sprite.rect.centerx < 200:
             self.offset = 5
@@ -56,7 +74,9 @@ class World:
     def draw(self) -> None:
         self.tiles.update(self.offset, 0)
         self.tiles.draw(self.surface)
+
         self.player.update()       
         self.scrollx()
         self.player.draw(self.surface)
+        self.collision()
 
