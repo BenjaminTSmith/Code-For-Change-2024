@@ -93,3 +93,4 @@ class World:
 
         self.horizontal_collision()
         self.vertical_collision()
+

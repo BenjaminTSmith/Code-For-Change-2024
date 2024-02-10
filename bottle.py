@@ -1,6 +1,6 @@
 import pygame
 
-class Bottle:
+class Bottle(pygame.sprite.Sprite):
     def __init__(self, pos):
         self.image = pygame.image.load("path/to/image")
         self.image = pygame.transform.rotozoom(self.image, 0, 0.5)

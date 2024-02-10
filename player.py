@@ -11,7 +11,7 @@ class Player(pygame.sprite.Sprite):
 
         pygame.sprite.Sprite.__init__(self)
         self.image = self.animations['idle'][0]
-        self.rect = self.image.get_rect(topleft=pos)
+        self.rect = self.image.get_rect(bottomleft=pos)
 
         # animation place holders
         self.idle = 0

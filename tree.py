@@ -2,7 +2,7 @@ import pygame
 import time
 
 
-class Tree:
+class Tree(pygame.sprite.Sprite):
     def __init__(self, pos):
         self.image = pygame.image.load("path/to/image")
         self.image = pygame.transform.rotozoom(self.image, 0, 0.5)
@@ -18,8 +18,6 @@ class Tree:
             self.image = pygame.image.load("path/to/growth")
 
 
-    def draw(self):
-
-
-
+    def update(self, *args, **kwargs):
+        ...
 
