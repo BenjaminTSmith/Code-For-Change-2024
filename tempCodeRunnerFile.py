@@ -1,1 +1,1 @@
-screen = pygame.display.set_mode((width, height))
+world.draw()
