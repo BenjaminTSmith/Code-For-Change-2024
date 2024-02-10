@@ -1,6 +1,7 @@
 import pygame
 from Player import Player
-from World import World
+from World import *
+from Tile import Tile
 
 
 pygame.init()
@@ -8,6 +9,8 @@ print("PyGame initialized")
 
 screen = pygame.display.set_mode((1280, 720))
 clock = pygame.time.Clock()
+
+world = World(world, screen)
 
 running = True
 
