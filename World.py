@@ -1,14 +1,13 @@
 import pygame
-from Tile import Tile
-from Player import Player
+from tile import Tile
+from player import Player
 
 
-world = [
+level = [
     '                    ',
-    '                    ',
-    '                    ',
-    '                    ',
-    '                    ',
+    '  .                 ',
+    '  .                 ',
+    '  .                 ',
     ' ....      .....    ',
     '                    ',
     '       P            ',
@@ -16,8 +15,8 @@ world = [
 ]
 
 tile_size = 64
-width = len(world[0]) * tile_size
-height = len(world) * tile_size
+width = 1200
+height = len(level) * tile_size
 
 
 class World:
@@ -26,6 +25,7 @@ class World:
         self.level = level
         self.tiles = pygame.sprite.Group()
         self.player = pygame.sprite.GroupSingle()
+        self.offset = 0
         self.create_world()
 
     def create_world(self) -> None:
@@ -41,9 +41,42 @@ class World:
                         player = Player((x_pos, y_pos))
                         self.player.add(player)
 
+    def collision(self):
+        player = self.player.sprite
+        player.rect.x += player.x_speed
+        self.player.sprite.rect.y += self.player.sprite.y_speed
+
+        for sprite in self.tiles.sprites():
+            if sprite.rect.colliderect(self.player.sprite.rect):
+                if player.x_speed < 0 and :
+                    player.rect.left = sprite.rect.right
+                elif player.x_speed > 0:
+                    player.rect.right = sprite.rect.left
+                if player.y_speed < 0:
+                    player.y_speed = 0
+                    player.rect.top = sprite.rect.bottom
+                elif player.y_speed > 0:
+                    player.rect.bottom = sprite.rect.top
+                    player.y_speed = 0
+
+    def scrollx(self):
+        if self.player.sprite.rect.centerx < 200:
+            self.offset = 5
+            self.player.sprite.move_x = 0
+            self.player.sprite.rect.centerx = 200
+        elif self.player.sprite.rect.centerx > 1000:
+            self.offset = -5
+            self.player.sprite.move_x = 0
+            self.player.sprite.rect.centerx = 1000
+        else:
+            self.offset = 0
+
     def draw(self) -> None:
-        self.tiles.update(0, 0)
+        self.tiles.update(self.offset, 0)
         self.tiles.draw(self.surface)
-        
+
+        self.player.update()       
+        self.scrollx()
         self.player.draw(self.surface)
+        self.collision()
 
