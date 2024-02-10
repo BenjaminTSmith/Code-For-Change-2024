@@ -8,8 +8,16 @@ class Bottle:
         self.destroyed = False
 
     def hit(self, lumberjack):
-        
-        pass
+        if self.lumberjack_close(lumberjack):
+            self.destroyed = True
+            return True
+        return False
+
+    def lumberjack_close(self, lumberjack):
+        if abs(lumberjack.rect.x - self.rect.x) < 10:
+            if abs(lumberjack.rect.y - self.rect.y) < 10:
+                return True
+        return False
 
     def is_destroyed(self):
         return self.destroyed
