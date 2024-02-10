@@ -1,3 +1,4 @@
+@ -1,92 +0,0 @@
 import pygame
 from tile import Tile
 from player import Player
@@ -89,4 +90,3 @@ class World:
 
         self.horizontal_collision()
         self.vertical_collision()
-
