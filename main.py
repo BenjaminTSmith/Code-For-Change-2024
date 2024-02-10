@@ -1,16 +1,14 @@
 import pygame, sys
-from player import Player
 from world import *
-from tile import Tile
 import game_menu
 
+game_menu.main_menu()
 
 pygame.init()
-print("PyGame initialized")
 
 screen = pygame.display.set_mode((width, height))
 clock = pygame.time.Clock()
-pygame.display.set_caption("Environemental GAME")
+pygame.display.set_caption("Environemental Game")
 
 world = World(level, screen)
 world.create_world()
@@ -23,7 +21,7 @@ while running:
         if event.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
-    screen.fill("black")
+    screen.fill("blue")
     world.draw()
     pygame.display.flip()
     clock.tick(60)

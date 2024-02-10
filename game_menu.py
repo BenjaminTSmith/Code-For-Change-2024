@@ -129,4 +129,5 @@ class Button():
 		else:
 			self.text = self.font.render(self.text_input, True, self.base_color)
 
-main_menu()
+if __name__ == "__main__":
+    main_menu()
