@@ -48,7 +48,7 @@ class World:
 
         for sprite in self.tiles.sprites():
             if sprite.rect.colliderect(self.player.sprite.rect):
-                if player.x_speed < 0 and :
+                if player.x_speed < 0:
                     player.rect.left = sprite.rect.right
                 elif player.x_speed > 0:
                     player.rect.right = sprite.rect.left
