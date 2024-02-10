@@ -12,10 +12,10 @@ class Tree(pygame.sprite.Sprite):
 
     def check_for_growth(self):
         now = time.time()
-        if self.plant_time - now > 500:
-            self.image = pygame.image.load("path/to/growth")
-        if self.plant_time - now > 1000:
-            self.image = pygame.image.load("path/to/growth")
+        if self.plant_time - now > 1:
+            self.image = pygame.image.load("assets/environment/Tree Growth 1.png")
+        if self.plant_time - now > 2:
+            self.image = pygame.image.load("assets/environment/Tree Growth 2.png")
 
 
     def update(self, *offsets, **_):
