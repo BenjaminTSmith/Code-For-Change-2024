@@ -17,12 +17,16 @@ class Player(pygame.sprite.Sprite):
         self.idle = 0
         self.run = 0
         self.chopping = 0
+        self.animation_speed = 0.1
 
         # movement settings
         self.x_speed = 0 
         self.y_speed = 0 
         self.gravity = 0.8
         self.jump_force = -20
+
+    def animate(self):
+        self.run += self.animation_speed
 
 
     def movement(self):
@@ -32,12 +36,10 @@ class Player(pygame.sprite.Sprite):
         if keys[pygame.K_RIGHT]:
             self.x_speed = 8
             self.image = self.animations['run'][self.run]
-            self.run += 1
             self.idle = 0
         if keys[pygame.K_LEFT]:
             self.x_speed = -8
             self.image = self.animations['run'][self.run]
-            self.run += 1
             self.idle = 1
         if keys[pygame.K_UP] or keys[pygame.K_SPACE]:
             if self.y_speed == 0:
