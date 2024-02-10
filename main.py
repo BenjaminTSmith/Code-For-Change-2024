@@ -2,6 +2,10 @@ import pygame, sys
 from world import *
 import game_menu
 from score import Scoreboard
+import animation
+
+print(animation.import_animations("assets/lumberjack/run"))
+
 
 pygame.init()
 screen = pygame.display.set_mode((width, height))

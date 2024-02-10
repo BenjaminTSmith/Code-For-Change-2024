@@ -25,9 +25,18 @@ class Player(pygame.sprite.Sprite):
         self.gravity = 0.8
         self.jump_force = -20
 
-    def animate(self):
-        self.run += self.animation_speed
+    def animate_run(self, direction):
+        if direction == "left":
+            self.run += self.animation_speed
+            if self.run > 4:
+                self.run = 0
+            self.image = self.animations['run'][int(self.run)]
+        else:
 
+            self.run += self.animation_speed
+            if self.run > 9 or self.run < 5:
+                self.run = 5
+            self.image = self.animations['run'][int(self.run)]
 
     def movement(self):
         self.x_speed = 0
@@ -35,11 +44,11 @@ class Player(pygame.sprite.Sprite):
         keys = pygame.key.get_pressed()
         if keys[pygame.K_RIGHT]:
             self.x_speed = 8
-            self.image = self.animations['run'][self.run]
+            self.animate_run("right")
             self.idle = 0
         if keys[pygame.K_LEFT]:
             self.x_speed = -8
-            self.image = self.animations['run'][self.run]
+            self.animate_run("left")
             self.idle = 1
         if keys[pygame.K_UP] or keys[pygame.K_SPACE]:
             if self.y_speed == 0:
