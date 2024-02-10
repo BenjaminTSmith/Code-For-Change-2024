@@ -45,17 +45,18 @@ class World:
         if self.player.sprite.rect.centerx < 200:
             self.offset = 5
             self.player.sprite.move_x = 0
+            self.player.sprite.rect.centerx = 200
         elif self.player.sprite.rect.centerx > 1000:
             self.offset = -5
             self.player.sprite.move_x = 0
+            self.player.sprite.rect.centerx = 1000
         else:
             self.offset = 0
 
     def draw(self) -> None:
         self.tiles.update(self.offset, 0)
         self.tiles.draw(self.surface)
-        self.player.sprite.movement()
-        self.scrollx()
         self.player.update()       
+        self.scrollx()
         self.player.draw(self.surface)
 
