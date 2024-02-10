@@ -14,9 +14,9 @@ class Player(pygame.sprite.Sprite):
     def movement(self): #make accerlation and brake
         keys = pygame.key.get_pressed()
         if keys[pygame.K_RIGHT]:
-            self.x_speed = 5
+            self.x_speed = 8
         elif keys[pygame.K_LEFT]:
-            self.x_speed = -5
+            self.x_speed = -8
         elif keys[pygame.K_UP] or keys[pygame.K_SPACE]:
             self.y_speed = self.jump_force
         else:

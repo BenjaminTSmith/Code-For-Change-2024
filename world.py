@@ -5,6 +5,8 @@ from player import Player
 
 level = [
     '                    ',
+    '                    ',
+    '                    ',
     '  .                 ',
     '  .                 ',
     '  .                 ',
@@ -67,11 +69,11 @@ class World:
 
     def scrollx(self):
         if self.player.sprite.rect.centerx < 200:
-            self.offset = 5
+            self.offset = 8
             self.player.sprite.move_x = 0
             self.player.sprite.rect.centerx = 200
         elif self.player.sprite.rect.centerx > 1000:
-            self.offset = -5
+            self.offset = -8
             self.player.sprite.move_x = 0
             self.player.sprite.rect.centerx = 1000
         else:
