@@ -34,6 +34,11 @@ class Player(pygame.sprite.Sprite):
                     self.move_y -= 0
                 if event.key == pygame.K_UP:
                     self.move_y += 0
+
+    def update(self, *args, **kwargs):
+        pass
+
+
                     
 
 
