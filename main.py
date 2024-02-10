@@ -21,6 +21,8 @@ while running:
         if event.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
+        
+        player.movement(event, 10,10)
     screen.fill("black")
     world.draw()
     pygame.display.flip()
