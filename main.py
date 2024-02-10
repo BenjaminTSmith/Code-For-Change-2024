@@ -23,7 +23,7 @@ while running:
             pygame.quit()
             sys.exit()
         
-        player.movement(event, 10,10)
+        player.movement(event)
     screen.fill("black")
     world.draw()
     pygame.display.flip()
