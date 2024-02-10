@@ -1,5 +1,6 @@
 import pygame
 from Tile import Tile
+from Player import Player
 
 
 world = [
@@ -10,7 +11,7 @@ world = [
     '                    ',
     ' ....      .....    ',
     '                    ',
-    'P                   ',
+    '       P            ',
     '....................',
 ]
 
@@ -24,21 +25,25 @@ class World:
         self.surface = surface
         self.level = level
         self.tiles = pygame.sprite.Group()
+        self.player = pygame.sprite.GroupSingle()
         self.create_world()
 
     def create_world(self) -> None:
         for index, row in enumerate(self.level):
             for cell_index, cell in enumerate(row):
+                x_pos = cell_index * tile_size
+                y_pos = index * tile_size
                 match cell:
                     case '.':
-                        x_pos = cell_index * tile_size
-                        y_pos = index * tile_size
                         tile = Tile((x_pos, y_pos), tile_size)
                         self.tiles.add(tile)
                     case 'P':
-                        ...
+                        player = Player((x_pos, y_pos))
+                        self.player.add(player)
 
     def draw(self) -> None:
-        self.tiles.update(-3)
+        # self.tiles.update(-3, 0)
         self.tiles.draw(self.surface)
+        
+        self.player.draw(self.surface)
 
