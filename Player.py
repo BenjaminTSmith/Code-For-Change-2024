@@ -1,8 +1,11 @@
 import pygame
 
 class Player(pygame.sprite.Sprite):
-    def __init__(self):
+    def __init__(self, pos):
         pygame.sprite.Sprite.__init__(self)
+        self.image = pygame.Surface((32, 64))
+        self.image.fill("white")
+        self.rect = self.image.get_rect(topleft=pos)
         self.move_x = 0 
         self.move_y = 0 
         self.accer = 0

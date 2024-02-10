@@ -15,7 +15,6 @@ world = World(world, screen)
 world.create_world()
 
 running = True
-player = Player()
 
 while running:
     for event in pygame.event.get():
