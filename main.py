@@ -21,7 +21,7 @@ while running:
         if event.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
-    screen.fill("blue")
+    screen.fill((135, 206, 235))
     world.draw()
     scoreboard.draw(screen)
     pygame.display.flip()
