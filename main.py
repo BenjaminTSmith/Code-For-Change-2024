@@ -1,7 +1,7 @@
 import pygame, sys
-from Player import Player
-from World import *
-from Tile import Tile
+from player import Player
+from world import *
+from tile import Tile
 
 
 pygame.init()
@@ -21,8 +21,6 @@ while running:
         if event.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
-        
-        player.movement(event)
     screen.fill("black")
     world.draw()
     pygame.display.flip()

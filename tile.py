@@ -9,3 +9,4 @@ class Tile(pygame.sprite.Sprite):
 
     def update(self, *offsets, **kwargs):
         self.rect.x += offsets[0]
+        self.rect.y += offsets[1]
