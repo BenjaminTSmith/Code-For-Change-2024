@@ -8,7 +8,6 @@ world = [
     '                    ',
     '                    ',
     '                    ',
-    '                    ',
     ' ....      .....    ',
     '                    ',
     '       P            ',
@@ -16,7 +15,7 @@ world = [
 ]
 
 tile_size = 64
-width = len(world[0]) * tile_size
+width = 1200
 height = len(world) * tile_size
 
 
@@ -26,6 +25,7 @@ class World:
         self.level = level
         self.tiles = pygame.sprite.Group()
         self.player = pygame.sprite.GroupSingle()
+        self.offset = 0
         self.create_world()
 
     def create_world(self) -> None:
@@ -41,9 +41,21 @@ class World:
                         player = Player((x_pos, y_pos))
                         self.player.add(player)
 
+    def scrollx(self):
+        if self.player.sprite.rect.centerx < 200:
+            self.offset = 5
+            self.player.sprite.move_x = 0
+        elif self.player.sprite.rect.centerx > 1000:
+            self.offset = -5
+            self.player.sprite.move_x = 0
+        else:
+            self.offset = 0
+
     def draw(self) -> None:
-        self.tiles.update(0, 0)
+        self.tiles.update(self.offset, 0)
         self.tiles.draw(self.surface)
+        self.player.sprite.movement()
+        self.scrollx()
         self.player.update()       
         self.player.draw(self.surface)
 

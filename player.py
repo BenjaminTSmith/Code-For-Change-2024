@@ -16,10 +16,8 @@ class Player(pygame.sprite.Sprite):
         keys = pygame.key.get_pressed()
         if keys[pygame.K_RIGHT]:
             self.move_x = self.vel
-            print("moved right: ",self.move_x)
         elif keys[pygame.K_LEFT]:
             self.move_x = -self.vel
-            print("moved left: ", self.move_x)
         else:
             self.move_x = 0
 
