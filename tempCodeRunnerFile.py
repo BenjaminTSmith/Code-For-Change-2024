@@ -1,1 +1,1 @@
-animat
+scoreboard = Scoreboard()

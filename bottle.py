@@ -15,8 +15,8 @@ class Bottle(pygame.sprite.Sprite):
         return False
 
     def lumberjack_close(self, lumberjack):
-        if abs(lumberjack.rect.centerx - self.rect.centerx) < 50:
-            if abs(lumberjack.rect.y - self.rect.y) < 50:
+        if abs(lumberjack.rect.centerx - self.rect.centerx) < 100:
+            if abs(lumberjack.rect.centery - self.rect.centery) < 100:
                 return True
         return False
 
@@ -25,4 +25,5 @@ class Bottle(pygame.sprite.Sprite):
 
     def update(self, *offsets, **kwargs):
         self.rect.x += offsets[0]
+
 

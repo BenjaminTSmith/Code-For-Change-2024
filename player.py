@@ -18,6 +18,7 @@ class Player(pygame.sprite.Sprite):
         self.chopping = 0
         self.chopping = 0
         self.animation_speed = 0.15
+        self.is_chopping = False
 
         #self.animations['chopping'][self.chopping]
 
@@ -48,17 +49,21 @@ class Player(pygame.sprite.Sprite):
         self.image = self.animations['idle'][self.idle]
         keys = pygame.key.get_pressed()
         if keys[pygame.K_RIGHT]:
+            self.is_chopping = False
             self.x_speed = 8
             self.animate_run("right")
             self.idle = 1
         elif keys[pygame.K_LEFT]:
+            self.is_chopping = False
             self.x_speed = -8
             self.animate_run("left")
             self.idle = 0
         if keys[pygame.K_UP] or keys[pygame.K_SPACE]:
+            self.is_chopping = False
             if self.y_speed == 0:
                 self.y_speed = self.jump_force
         if keys[pygame.K_x]:
+            self.is_chopping = True
             self.y_speed = 0
             self.x_speed = 0
             self.animate_run("chopping")

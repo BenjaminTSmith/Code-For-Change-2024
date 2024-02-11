@@ -11,11 +11,10 @@ print(animation.import_animations("assets/lumberjack/run"))
 pygame.init()
 screen = pygame.display.set_mode((width, height))
 clock = pygame.time.Clock()
-pygame.display.set_caption("Environemental Game")
+pygame.display.set_caption("Lumberjack's Revenge")
 world = World(level, screen)
 world.create_world()
-scoreboard = Scoreboard()
-scoreboard.increase_score(10) #add score when you do something!!!
+
 cloud_group = clouds.create_clouds(8)
 
 running = True
@@ -29,7 +28,6 @@ while running:
     screen.fill((135, 206, 235))
     cloud_group.draw(screen)
     world.draw()
-    scoreboard.draw(screen)
     pygame.display.flip()
     clock.tick(60)
 
