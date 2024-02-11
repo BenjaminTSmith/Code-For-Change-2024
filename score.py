@@ -1,3 +1,4 @@
+
 import pygame
 
 class Scoreboard:
@@ -7,6 +8,12 @@ class Scoreboard:
 
     def increase_score(self, points):
         self.score += points
+
+    def decrease_score(self, points):
+        self.score -= points
+    
+    def return_score(self):
+        return self.score
 
     def reset_score(self):
         self.score = 0
