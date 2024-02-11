@@ -17,7 +17,7 @@ class Player(pygame.sprite.Sprite):
         self.idle = 0
         self.run = 0
         self.chopping = 0
-        self.animation_speed = 0.20
+        self.animation_speed = 0.15
 
         # movement settings
         self.x_speed = 0 
@@ -45,7 +45,7 @@ class Player(pygame.sprite.Sprite):
             self.x_speed = 8
             self.animate_run("right")
             self.idle = 1
-        if keys[pygame.K_LEFT]:
+        elif keys[pygame.K_LEFT]:
             self.x_speed = -8
             self.animate_run("left")
             self.idle = 0

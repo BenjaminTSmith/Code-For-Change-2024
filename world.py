@@ -1,4 +1,5 @@
 import pygame
+import random
 from tile import Tile
 from player import Player
 from bottle import Bottle
@@ -6,17 +7,16 @@ from tree import Tree
 
 
 level = [
-    '.                                      .',
-    '.                                      .',
-    '.                                      .',
-    '.                                      .',
-    '.  .        ...               ....     .',
-    '.  .                    .....          .',
-    '......            .....                .',
-    '.                                      .',
-    '.                                      .',
-    '.       P     .                        .',                 
-    '........................................',
+    '                                      ',
+    '                                      ',
+    '                                      ',
+    '  .        ...               ....     ',
+    '  .                    .....          ',
+    '.....            .....                ',
+    '                                      ',
+    '                                      ',
+    '       P     ......                        ',                 
+    '............................................',
 ]
 
 tile_size = 64
@@ -34,8 +34,11 @@ class World:
         self.player = pygame.sprite.GroupSingle()
         self.offset = 0
         self.create_world()
-        self.bottles.add(Bottle((300, 300)))
-        self.trees.add(Tree((400, 400)))
+        while True:
+            random_choice = random.randrange(0, len(self.level[-1]))
+            if self.level[-2][random_choice] == ' ':
+                self.bottles.add(Bottle((random_choice * 64, 576)))
+                break
 
     def create_world(self) -> None:
         for index, row in enumerate(self.level):
