@@ -26,3 +26,4 @@ class Bottle(pygame.sprite.Sprite):
     def update(self, *offsets, **kwargs):
         self.rect.x += offsets[0]
 
+

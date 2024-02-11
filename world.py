@@ -4,6 +4,7 @@ from tile import Tile
 from player import Player
 from bottle import Bottle
 from tree import Tree
+from score import Scoreboard
 
 
 level = [
@@ -52,10 +53,13 @@ class World:
 
     def spawn_bottle(self):
         while True:
+            print("spawning bottles")
             random_choice = random.randrange(0, len(self.level[-2]))
             if self.level[-2][random_choice] == ' ':
                 self.bottles.add(Bottle((random_choice * 64, 576)))
+                Scoreboard.decrease_score(10)
                 break
+            
 
 
     def horizontal_collision(self):
@@ -117,4 +121,13 @@ class World:
 
         self.horizontal_collision()
         self.vertical_collision()
-
+'''
+    def points(self, bottles):
+        for bottle in self.bottles:
+            if bottle.is_destroyed:
+                increase_score(10)
+            elif not bottle.is_destroyed:
+                decrease_score(10)
+            
+        return points
+ '''   
