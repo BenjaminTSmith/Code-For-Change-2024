@@ -3,7 +3,7 @@ import pygame, sys
 pygame.init()
 
 SCREEN = pygame.display.set_mode((1270, 710))
-pygame.display.set_caption("Menu")
+pygame.display.set_caption("Lumberjack's Revenge")
 BG = pygame.image.load("assets/Menu Background.png")
 def get_font(size): # Returns Press-Start-2P in the desired size
     return pygame.font.Font("assets/font.ttf", size)
