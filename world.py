@@ -23,6 +23,7 @@ level = [
 tile_size = 64
 width = 1200
 height = len(level) * tile_size
+scoreboard = Scoreboard()
 
 
 class World:
@@ -53,15 +54,14 @@ class World:
 
     def spawn_bottle(self):
         while True:
-            print("spawning bottles")
             random_choice = random.randrange(0, len(self.level[-2]))
             if self.level[-2][random_choice] == ' ':
                 self.bottles.add(Bottle((random_choice * 64, 576)))
-                Scoreboard.decrease_score(10)
+                print("spawning bottles")
+                scoreboard.decrease_score(10)
+                print(scoreboard.return_score())
                 break
             
-
-
     def horizontal_collision(self):
         player = self.player.sprite
         player.rect.x += player.x_speed
@@ -123,6 +123,8 @@ class World:
 
         self.horizontal_collision()
         self.vertical_collision()
+
+        scoreboard.draw(self.surface)
 '''
     def points(self, bottles):
         for bottle in self.bottles:
