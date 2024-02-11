@@ -57,9 +57,6 @@ class World:
             random_choice = random.randrange(0, len(self.level[-2]))
             if self.level[-2][random_choice] == ' ':
                 self.bottles.add(Bottle((random_choice * 64, 576)))
-                print("spawning bottles")
-                scoreboard.decrease_score(10)
-                print(scoreboard.return_score())
                 break
             
     def horizontal_collision(self):
@@ -118,6 +115,7 @@ class World:
                 if bottle.hit(self.player.sprite):
                     self.bottles.remove(bottle)
                     self.trees.add(Tree((bottle.rect.left, bottle.rect.bottom)))
+                    scoreboard.increase_score(10)
         self.bottles.update(self.offset)
         self.bottles.draw(self.surface)
 

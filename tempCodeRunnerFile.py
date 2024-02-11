@@ -1,1 +1,1 @@
-scoreboard = Scoreboard()
+de
