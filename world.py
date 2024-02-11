@@ -9,6 +9,7 @@ level = [
     '.                                      .',
     '.                                      .',
     '.                                      .',
+    '.                                      .',
     '.  .        ...               ....     .',
     '.  .                    .....          .',
     '......            .....                .',
@@ -43,7 +44,7 @@ class World:
                 y_pos = index * tile_size
                 match cell:
                     case '.':
-                        tile = Tile((x_pos, y_pos), tile_size)
+                        tile = Tile((x_pos, y_pos))
                         self.tiles.add(tile)
                     case 'P':
                         player = Player((x_pos, y_pos))
