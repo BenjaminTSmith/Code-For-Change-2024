@@ -109,9 +109,10 @@ class World:
 
         self.trees.update(self.offset)
         self.trees.draw(self.surface)
-        for bottle in self.bottles:
+        for bottle in self.bottles.sprites():
             if bottle.hit(self.player.sprite):
                 self.bottles.remove(bottle)
+                self.trees.add(Tree((bottle.rect.left, bottle.rect.bottom)))
         self.bottles.update(self.offset)
         self.bottles.draw(self.surface)
 
