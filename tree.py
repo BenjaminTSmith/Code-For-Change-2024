@@ -10,7 +10,7 @@ class Tree(pygame.sprite.Sprite):
         self.image_growth1 = pygame.image.load("assets/environment/Tree Stage 1.png")
         self.image_growth2 = pygame.image.load("assets/environment/Tree Stage 2.png")
         self.image = pygame.transform.rotozoom(self.image, 0, 0.5)
-        self.rect = self.image.get_rect(midbottom=pos)
+        self.rect = self.image.get_rect(midbottom=(pos[0], pos[1] + 20))
         self.plant_time = pygame.time.get_ticks()
 
     def check_for_growth(self):
