@@ -12,7 +12,6 @@ pygame.init()
 screen = pygame.display.set_mode((width, height))
 clock = pygame.time.Clock()
 pygame.display.set_caption("Environemental Game")
-
 world = World(level, screen)
 world.create_world()
 scoreboard = Scoreboard()

@@ -5,10 +5,9 @@ class Player(pygame.sprite.Sprite):
     def __init__(self, pos):
         # setup
         self.animation_path = "assets/lumberjack"
-        self.animations = {'idle' : [], 'run' : []}
+        self.animations = {'idle' : [], 'run' : [], "chopping": []}
         for key in self.animations.keys():
             self.animations[key] = import_animations(self.animation_path + '/' + key)
-
         pygame.sprite.Sprite.__init__(self)
         self.image = self.animations['idle'][0]
         self.rect = self.image.get_rect(bottomleft=pos)
@@ -17,7 +16,10 @@ class Player(pygame.sprite.Sprite):
         self.idle = 0
         self.run = 0
         self.chopping = 0
+        self.chopping = 0
         self.animation_speed = 0.15
+
+        #self.animations['chopping'][self.chopping]
 
         # movement settings
         self.x_speed = 0 
@@ -26,6 +28,11 @@ class Player(pygame.sprite.Sprite):
         self.jump_force = -18
 
     def animate_run(self, direction):
+        print("chopping")
+        if direction == "chopping":
+            if int(self.chopping) >= len(self.animations["chopping"]):
+                self.chopping = 0
+            self.image = self.animations["chopping"][int(self.chopping)]
         if direction == "left":
             self.run += self.animation_speed
             if self.run > 7:
@@ -53,9 +60,10 @@ class Player(pygame.sprite.Sprite):
             if self.y_speed == 0:
                 self.y_speed = self.jump_force
         if keys[pygame.K_x]:
-            self.y_speed = 0
-            self.x_speed = 0
-            self.animate_run("")
+                self.y_speed = 0
+                self.x_speed = 0
+                self.animate_run("chopping")
+        
 
     def apply_physics(self):
         self.y_speed += self.gravity
