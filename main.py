@@ -16,7 +16,7 @@ pygame.display.set_caption("Environemental Game")
 world = World(level, screen)
 world.create_world()
 scoreboard = Scoreboard()
-scoreboard.increase_score(10)
+scoreboard.increase_score(10) #add score when you do something!!!
 cloud_group = clouds.create_clouds(8)
 
 running = True
