@@ -28,7 +28,6 @@ class Player(pygame.sprite.Sprite):
         self.jump_force = -18
 
     def animate_run(self, direction):
-        print("chopping")
         if direction == "chopping":
             if int(self.chopping) >= len(self.animations["chopping"]):
                 self.chopping = 0
@@ -60,9 +59,9 @@ class Player(pygame.sprite.Sprite):
             if self.y_speed == 0:
                 self.y_speed = self.jump_force
         if keys[pygame.K_x]:
-                self.y_speed = 0
-                self.x_speed = 0
-                self.animate_run("chopping")
+            self.y_speed = 0
+            self.x_speed = 0
+            self.animate_run("chopping")
         
 
     def apply_physics(self):

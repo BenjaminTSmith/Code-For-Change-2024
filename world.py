@@ -94,7 +94,7 @@ class World:
         else:
             self.offset = 0
 
-    def draw(self) -> None:
+    def draw(self):
         
         if pygame.time.get_ticks() - self.timer > 8000:
             self.spawn_bottle()
@@ -109,6 +109,9 @@ class World:
 
         self.trees.update(self.offset)
         self.trees.draw(self.surface)
+        for bottle in self.bottles:
+            if bottle.hit(self.player.sprite):
+                self.bottles.remove(bottle)
         self.bottles.update(self.offset)
         self.bottles.draw(self.surface)
 
