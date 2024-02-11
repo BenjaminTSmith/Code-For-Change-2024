@@ -125,13 +125,4 @@ class World:
         self.vertical_collision()
 
         scoreboard.draw(self.surface)
-'''
-    def points(self, bottles):
-        for bottle in self.bottles:
-            if bottle.is_destroyed:
-                increase_score(10)
-            elif not bottle.is_destroyed:
-                decrease_score(10)
-            
-        return points
- '''   
+
