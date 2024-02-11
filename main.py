@@ -3,6 +3,7 @@ from world import *
 import game_menu
 from score import Scoreboard
 import animation
+import clouds
 
 print(animation.import_animations("assets/lumberjack/run"))
 
@@ -16,6 +17,7 @@ world = World(level, screen)
 world.create_world()
 scoreboard = Scoreboard()
 scoreboard.increase_score(10)
+cloud_group = clouds.create_clouds(10)
 
 running = True
 
@@ -26,6 +28,7 @@ while running:
             pygame.quit()
             sys.exit()
     screen.fill((135, 206, 235))
+    cloud_group.draw(screen)
     world.draw()
     scoreboard.draw(screen)
     pygame.display.flip()
