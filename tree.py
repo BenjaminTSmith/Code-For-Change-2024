@@ -1,7 +1,6 @@
 import pygame
 import time
 
-
 class Tree(pygame.sprite.Sprite):
     def __init__(self, pos):
         super().__init__()
@@ -19,17 +18,15 @@ class Tree(pygame.sprite.Sprite):
         if elapsed_time > 10000:
             self.image = self.image_growth1
             self.image = pygame.transform.rotozoom(self.image, 0, 0.5)
-            self.rect.y -= 100;
+            # Manually sets position for growth stage 1
+            self.rect.y = 435
             
-        if elapsed_time > 10000 and elapsed_time < 10010:
-            self.rect.y -= 100;
-        if elapsed_time > 20000:
+        if elapsed_time > 30000:
             self.image = self.image_growth2
             self.image = pygame.transform.rotozoom(self.image, 0, 0.5)
-        if elapsed_time > 20000 and elapsed_time < 20010:
-            self.rect.y -= 50;
+            # Manually sets position for growth stage 2
+            self.rect.y = 385
 
     def update(self, *offsets, **_):
         self.check_for_growth()
         self.rect.x += offsets[0]
-

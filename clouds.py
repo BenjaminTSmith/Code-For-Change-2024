@@ -17,7 +17,7 @@ def create_clouds(num_clouds):
     ]
     clouds = pygame.sprite.Group()
     for i in range(num_clouds):
-        x = random.randint(200, 900)  # Adjust as needed based on your screen width
+        x = random.randint(50, 2000)  # Adjust as needed based on your screen width
         y = random.randint(0, 100)   # Adjust as needed based on your screen height
         image_path = random.choice(cloud_images)
         cloud = Cloud(x, y, image_path)
