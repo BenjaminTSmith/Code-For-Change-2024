@@ -10,12 +10,12 @@ level = [
     '                                      ',
     '                                      ',
     '                                      ',
-    '  .        ...               ....     ',
-    '  .                    .....          ',
-    '.....            .....                ',
+    '          ',
+    '                      ',
+    '',
     '                                      ',
     '                                      ',
-    '       P     ......                        ',                 
+    '       P                                   ',                 
     '............................................',
 ]
 
@@ -34,11 +34,8 @@ class World:
         self.player = pygame.sprite.GroupSingle()
         self.offset = 0
         self.create_world()
-        while True:
-            random_choice = random.randrange(0, len(self.level[-1]))
-            if self.level[-2][random_choice] == ' ':
-                self.bottles.add(Bottle((random_choice * 64, 576)))
-                break
+        self.spawn_bottle()
+        self.timer = pygame.time.get_ticks()
 
     def create_world(self) -> None:
         for index, row in enumerate(self.level):
@@ -52,6 +49,14 @@ class World:
                     case 'P':
                         player = Player((x_pos, y_pos))
                         self.player.add(player)
+
+    def spawn_bottle(self):
+        while True:
+            random_choice = random.randrange(0, len(self.level[-2]))
+            if self.level[-2][random_choice] == ' ':
+                self.bottles.add(Bottle((random_choice * 64, 576)))
+                break
+
 
     def horizontal_collision(self):
         player = self.player.sprite
@@ -90,6 +95,11 @@ class World:
             self.offset = 0
 
     def draw(self) -> None:
+        
+        if pygame.time.get_ticks() - self.timer > 8000:
+            self.spawn_bottle()
+            self.timer = pygame.time.get_ticks()
+
         self.player.update()       
         self.scrollx()
         self.player.draw(self.surface)
@@ -104,8 +114,4 @@ class World:
 
         self.horizontal_collision()
         self.vertical_collision()
-
-
-
-
 

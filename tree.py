@@ -15,9 +15,9 @@ class Tree(pygame.sprite.Sprite):
     def check_for_growth(self):
         now = pygame.time.get_ticks()
         elapsed_time = now - self.plant_time 
-        if elapsed_time > 1000:
+        if elapsed_time > 10000:
             self.image = self.image_growth1
-        if elapsed_time > 2000:
+        if elapsed_time > 20000:
             self.image = self.image_growth2
 
     def update(self, *offsets, **_):
