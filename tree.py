@@ -19,13 +19,13 @@ class Tree(pygame.sprite.Sprite):
             self.image = self.image_growth1
             self.image = pygame.transform.rotozoom(self.image, 0, 0.5)
             # Manually sets position for growth stage 1
-            self.rect.y = 435
+            self.rect.y = 400
             
         if elapsed_time > 30000:
             self.image = self.image_growth2
             self.image = pygame.transform.rotozoom(self.image, 0, 0.5)
             # Manually sets position for growth stage 2
-            self.rect.y = 385
+            self.rect.y = 350
 
     def update(self, *offsets, **_):
         self.check_for_growth()
